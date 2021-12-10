@@ -1,0 +1,87 @@
+:root {
+  --grad-1: #ce9009;
+  --grad-2: #c40c56;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 2vmin;
+}
+
+body {
+  background: #000 none;
+  color: #fff;
+  padding: 4vmin;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+}
+
+.gradient {
+  background: linear-gradient(
+                  90deg,
+                  var(--grad-1),
+                  var(--grad-2)
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a {
+  color: #888;
+  text-decoration: underline;
+  display: inline-block;
+  padding: 2vmin;
+}
+
+.months {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15vmin;
+
+  .month {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .description {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .name {
+      text-transform: capitalize;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      justify-items: center;
+      align-content: center;
+      grid-gap: 0.5vmin;
+      align-self: stretch;
+
+      .day {
+        font-weight: bold;
+        font-size: 1rem;
+
+        &.holiday {
+          color: var(--grad-2);
+        }
+      }
+    }
+  }
+}
