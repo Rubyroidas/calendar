@@ -12,6 +12,9 @@ export class Store {
     constructor() {
         try {
             this.year = parseInt(localStorage.getItem('year'), 10);
+            if (Number.isNaN(this.year)) {
+                throw new Error();
+            }
         } catch (e) {
             this.year = new Date().getFullYear();
         }
