@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/\\d+"
-  to = "/"
+  from = "/2*"
+  to = "/index.html"
   status = 200
   force = true
