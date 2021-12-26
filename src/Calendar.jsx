@@ -3,94 +3,20 @@ import {Link, useParams} from 'react-router-dom';
 import classNames from 'classnames';
 
 import dayjs from 'dayjs';
+import 'dayjs/locale/en';
+import 'dayjs/locale/ru';
+import 'dayjs/locale/uk';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
-dayjs.extend(isoWeek);
-dayjs.locale(navigator.language);
+import * as locales from './locales';
 
-const pageTitles = {
-    ru: 'Ёбаный календарь',
-    ua: 'Йобаний календар',
-    en: 'Fucking calendar',
-};
-const monthDescriptions = {
-    ru: [
-        'Ёбаный новый год',
-        'Ёбаный холод',
-        'Ёбаная грязь',
-        'Ёбаные шутники',
-        'Ёбаный день труда',
-        'Ёбаные школьники',
-        'Ёбаная жара',
-        'Ёбаный отпуск',
-        'Ёбаное 3 сентября',
-        'Ёбаный дождь',
-        'Ёбаные скидки',
-        'Ёбаные подарки',
-    ],
-    ua: [
-        'Йобаний новий рік',
-        'Йобаний холод',
-        'Йобаний бруд',
-        'Йобані жартівники',
-        'Йобаний день праці',
-        'Йобані школярі',
-        'Йобана спека',
-        'Йобаний відпустка',
-        'Йобане 3 вересня',
-        'Йобаний дощ',
-        'Йобані знижки',
-        'Йобані подарунки',
-    ],
-    en: [
-        'Fucking new year',
-        'Fucking freezing',
-        'Fucking dirt',
-        'Fucking jokers',
-        'Fucking labor day',
-        'Fucking students',
-        'Fucking hot',
-        'Fucking vacation',
-        'Fucking 3rd september',
-        'Fucking raining',
-        'Fucking discounts',
-        'Fucking gifts',
-    ],
-};
-const weekDays = {
-    ru: [
-        'Пн',
-        'Вт',
-        'Ср',
-        'Чт',
-        'Пт',
-        'Сб',
-        'Вс',
-    ],
-    ua: [
-        'Пн',
-        'Вт',
-        'Ср',
-        'Чт',
-        'Пт',
-        'Сб',
-        'Нд',
-    ],
-    en: [
-        'Mo',
-        'Tu',
-        'We',
-        'Th',
-        'Fr',
-        'Sa',
-        'Su',
-    ],
-};
+dayjs.extend(isoWeek);
 
 const preferredLanguage = navigator.languages
     .map(lang => lang.match(/\w+/)[0])
-    .find(lang => Object.keys(monthDescriptions).includes(lang))
+    .find(lang => Object.keys(locales).includes(lang))
     || 'ru';
+dayjs.locale(preferredLanguage);
 
 /**
  * @param {number} month
@@ -115,10 +41,10 @@ const Month = ({month, year}) => {
 
     return (
         <div className="month">
-            <div className="description">{monthDescriptions[preferredLanguage][month - 1]}</div>
+            <div className="description">{locales[preferredLanguage].monthDescriptions[month - 1]}</div>
             <div className="name gradient">{monthName}</div>
             <div className="days">
-                {weekDays[preferredLanguage].map((day, i) => (
+                {locales[preferredLanguage].weekDays.map((day, i) => (
                     <div key={i} className={classNames('day', {holiday: i >= 5})}>{day}</div>
                 ))}
                 {offsetters.map(i => (
@@ -143,7 +69,7 @@ export const Calendar = () => {
         months.push(i);
     }
 
-    const pageTitle = pageTitles[preferredLanguage];
+    const pageTitle = locales[preferredLanguage].pageTitle;
     useEffect(() => {
         document.title = pageTitle;
     }, []);
