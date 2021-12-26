@@ -20,6 +20,7 @@ export class Store {
                 .map(lang => lang.match(/\w+/)[0])
                 .find(lang => this.availableLanguages.includes(lang))
             || 'ru';
+        dayjs.locale(this.preferredLanguage);
         makeAutoObservable(this);
     }
 
