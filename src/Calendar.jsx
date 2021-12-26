@@ -77,9 +77,9 @@ export const Calendar = () => {
     return (
         <div>
             <h1 className="gradient">{pageTitle} {year}</h1>
-            <div>
-                <Link to={`/${year - 1}`}>&lt;{year - 1}</Link>
-                <Link to={`/${year + 1}`}>{year + 1}&gt;</Link>
+            <div className="year-links">
+                <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
+                <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
             </div>
             <div className="months">
                 {months.map(month => (
