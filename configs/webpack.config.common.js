@@ -34,7 +34,12 @@ module.exports = (_, baseConfig) => {
                         development
                             ? 'style-loader'
                             : MiniCssExtractPlugin.loader,
-                        'css-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false
+                            }
+                        },
                         'sass-loader',
                     ]
                 }

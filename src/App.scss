@@ -1,17 +1,18 @@
 :root {
   --grad-1: #ce9009;
   --grad-2: #c40c56;
+  --bg: #000;
 }
 
 body, html {
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: 'Noto Sans Display', sans-serif;
   font-size: 2vmin;
 }
 
 body {
-  background: #000 none;
+  background: var(--bg) none;
   color: #fff;
   padding: 4vmin;
 }
@@ -21,6 +22,7 @@ h1 {
   text-transform: uppercase;
   padding: 1vmin 0;
   margin: 1vmin 0;
+  line-height: 105%;
 }
 
 #root {
@@ -37,6 +39,40 @@ h1 {
   display: inline-block;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.language-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  & > .flag {
+    display: inline-block;
+    margin: 0 1rem;
+    background: transparent none no-repeat center center;
+    background-size: contain;
+    background-origin: content-box;
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+
+    &.current {
+      opacity: 1;
+    }
+
+    &.ru {
+      background-image: url("/img/flag-ru.png");
+    }
+
+    &.uk {
+      background-image: url("/img/flag-uk.png");
+    }
+
+    &.en {
+      background-image: url("/img/flag-en.png");
+    }
+  }
 }
 
 .year-links {

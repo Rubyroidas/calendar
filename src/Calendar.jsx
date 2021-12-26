@@ -9,14 +9,10 @@ import 'dayjs/locale/uk';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
 import * as locales from './locales';
+import {useStore} from './store';
+import {observer} from 'mobx-react';
 
 dayjs.extend(isoWeek);
-
-const preferredLanguage = navigator.languages
-    .map(lang => lang.match(/\w+/)[0])
-    .find(lang => Object.keys(locales).includes(lang))
-    || 'ru';
-dayjs.locale(preferredLanguage);
 
 /**
  * @param {number} month
@@ -24,7 +20,8 @@ dayjs.locale(preferredLanguage);
  * @return {JSX.Element}
  * @constructor
  */
-const Month = ({month, year}) => {
+const Month = observer(({month, year}) => {
+    const store = useStore();
     const firstMonday = dayjs(`${year}-${month}-10`).startOf('isoWeek').date() % 7;
     const skipDays = 8 - firstMonday;
     const firstDay = new Date(`${year}-${month}-01`);
@@ -41,10 +38,10 @@ const Month = ({month, year}) => {
 
     return (
         <div className="month">
-            <div className="description">{locales[preferredLanguage].monthDescriptions[month - 1]}</div>
+            <div className="description">{locales[store.preferredLanguage].monthDescriptions[month - 1]}</div>
             <div className="name gradient">{monthName}</div>
             <div className="days">
-                {locales[preferredLanguage].weekDays.map((day, i) => (
+                {locales[store.preferredLanguage].weekDays.map((day, i) => (
                     <div key={i} className={classNames('day', {holiday: i >= 5})}>{day}</div>
                 ))}
                 {offsetters.map(i => (
@@ -58,24 +55,44 @@ const Month = ({month, year}) => {
             </div>
         </div>
     );
-};
+});
 
-export const Calendar = () => {
+const LanguageSelector = observer(() => {
+    const store = useStore();
+
+    return (
+        <div className="language-select">
+            {store.availableLanguages.map(lang => (
+                <div
+                    key={lang}
+                    className={classNames('flag', lang, {current: lang === store.preferredLanguage})}
+                    onClick={() => store.setPreferredLanguage(lang)}
+                />
+            ))}
+        </div>
+    );
+});
+__DEV__ && (LanguageSelector.displayName = 'LanguageSelector');
+
+export const Calendar =  observer(() => {
+    const store = useStore();
     const {year: yearStr} = useParams();
-    const year = /^\d+$/.test(yearStr) ? parseInt(yearStr, 10) : new Date().getFullYear();
+    const year = /^\d+$/.test(yearStr) ? parseInt(yearStr, 10) : store.year;
 
     const months = [];
     for (let i = 1; i <= 12; i++) {
         months.push(i);
     }
 
-    const pageTitle = locales[preferredLanguage].pageTitle;
+    const pageTitle = locales[store.preferredLanguage].pageTitle;
     useEffect(() => {
         document.title = pageTitle;
-    }, []);
+        store.setYear(year);
+    }, [store.preferredLanguage, year]);
 
     return (
         <div>
+            <LanguageSelector/>
             <h1 className="gradient">{pageTitle} {year}</h1>
             <div className="year-links">
                 <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
@@ -88,4 +105,4 @@ export const Calendar = () => {
             </div>
         </div>
     );
-};
+});
