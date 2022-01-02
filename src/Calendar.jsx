@@ -75,6 +75,24 @@ const LanguageSelector = observer(() => {
 });
 __DEV__ && (LanguageSelector.displayName = 'LanguageSelector');
 
+const ThemeSelector = observer(() => {
+    const store = useStore();
+
+    return (
+        <div className="theme-select">
+            theme:
+            {store.availableThemes.map(theme => (
+                <div
+                    key={theme}
+                    className={classNames('theme-item', `theme-${theme || 'default'}`, {current: theme === store.theme})}
+                    onClick={() => store.setPreferredTheme(theme)}
+                />
+            ))}
+        </div>
+    );
+});
+__DEV__ && (ThemeSelector.displayName = 'ThemeSelector');
+
 export const Calendar =  observer(() => {
     const store = useStore();
     const {year: yearStr} = useParams();
@@ -90,10 +108,15 @@ export const Calendar =  observer(() => {
         document.title = pageTitle;
         store.setYear(year);
     }, [store.preferredLanguage, year]);
+    useEffect(() => {
+        document.body.classList = [...document.body.classList].filter(c => !c.startsWith('theme-'));
+        document.body.classList.toggle(`theme-${store.theme}`, !!store.theme);
+    }, [store.theme]);
 
     return (
         <div>
             <LanguageSelector/>
+            <ThemeSelector/>
             <h1 className="gradient">{pageTitle} {year}</h1>
             <div className="year-links">
                 <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>

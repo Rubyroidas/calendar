@@ -4,9 +4,10 @@ import * as locales from './locales';
 import dayjs from 'dayjs';
 
 export class Store {
-    // theme = null;
+    theme = null;
     year = null;
     preferredLanguage = 'en';
+    availableThemes = [null, 'purple', 'green'];
     availableLanguages = Object.keys(locales);
 
     constructor() {
@@ -18,6 +19,7 @@ export class Store {
         } catch (e) {
             this.year = new Date().getFullYear();
         }
+        this.theme = localStorage.getItem('theme') || null;
         this.preferredLanguage = localStorage.getItem('preferredLanguage')
             || navigator.languages
                 .map(lang => lang.match(/\w+/)[0])
@@ -32,6 +34,17 @@ export class Store {
             this.preferredLanguage = value;
             localStorage.setItem('preferredLanguage', value);
             dayjs.locale(this.preferredLanguage);
+        });
+    }
+
+    setPreferredTheme(value) {
+        runInAction(() => {
+            this.theme = value;
+            if (value) {
+                localStorage.setItem('theme', value);
+            } else {
+                localStorage.removeItem('theme');
+            }
         });
     }
 
