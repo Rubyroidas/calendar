@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -63,6 +63,7 @@ const LanguageSelector = observer(() => {
 
     return (
         <div className="language-select">
+            {locales[store.preferredLanguage].language}:
             {store.availableLanguages.map(lang => (
                 <div
                     key={lang}
@@ -80,7 +81,7 @@ const ThemeSelector = observer(() => {
 
     return (
         <div className="theme-select">
-            theme:
+            {locales[store.preferredLanguage].theme}:
             {store.availableThemes.map(theme => (
                 <div
                     key={theme}
@@ -93,7 +94,33 @@ const ThemeSelector = observer(() => {
 });
 __DEV__ && (ThemeSelector.displayName = 'ThemeSelector');
 
-export const Calendar =  observer(() => {
+const MenuIcon = ({onClick}) => (
+    <svg onClick={onClick} className="menu-icon" viewBox="0 0 32 32"
+         xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="6" width="28" height="6" rx="4"/>
+        <rect x="2" y="13" width="28" height="6" rx="4"/>
+        <rect x="2" y="20" width="28" height="6" rx="4"/>
+    </svg>
+);
+
+const Menu = () => {
+    const [collapsed, setCollapsed] = useState(true);
+    const onMenuClick = () => {
+        setCollapsed(v => !v)
+    };
+
+    return (
+        <menu className={classNames({open: !collapsed})}>
+            <MenuIcon onClick={onMenuClick}/>
+            <div className="body">
+                <LanguageSelector/>
+                <ThemeSelector/>
+            </div>
+        </menu>
+    );
+};
+
+export const Calendar = observer(() => {
     const store = useStore();
     const {year: yearStr} = useParams();
     const year = /^\d+$/.test(yearStr) ? parseInt(yearStr, 10) : store.year;
@@ -115,17 +142,18 @@ export const Calendar =  observer(() => {
 
     return (
         <div>
-            <LanguageSelector/>
-            <ThemeSelector/>
-            <h1 className="gradient">{pageTitle} {year}</h1>
-            <div className="year-links">
-                <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
-                <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
-            </div>
-            <div className="months">
-                {months.map(month => (
-                    <Month key={month} month={month} year={year}/>
-                ))}
+            <Menu/>
+            <div className="calendar">
+                <h1 className="gradient">{pageTitle} {year}</h1>
+                <div className="year-links">
+                    <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
+                    <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
+                </div>
+                <div className="months">
+                    {months.map(month => (
+                        <Month key={month} month={month} year={year}/>
+                    ))}
+                </div>
             </div>
         </div>
     );
