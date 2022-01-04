@@ -167,13 +167,18 @@ menu {
 }
 
 .year-links {
+  margin: 1vmin 0;
+
   & > a {
     color: var(--link-color);
-    text-decoration: underline;
+    text-decoration: none;
     display: inline-block;
     padding: 2vmin;
+    margin: 0 1vmin;
     font-size: 2rem;
-    font-weight: bold;
+    //font-weight: bold;
+    border: solid 1px var(--link-color);
+    border-radius: 1rem;
   }
 }
 
@@ -240,4 +245,15 @@ menu {
   --bg: #b5ff99;
   --text-color: #3c3c3c;
   --link-color: #813027;
+}
+
+.feedback {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: var(--link-color);
+  text-decoration: underline;
+  display: inline-block;
+  padding: 2vmin;
+  font-size: 1.5rem;
 }

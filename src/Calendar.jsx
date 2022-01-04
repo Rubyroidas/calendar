@@ -103,6 +103,17 @@ const MenuIcon = ({onClick}) => (
     </svg>
 );
 
+const Feedback = () => {
+    const store = useStore();
+    const url = 'https://docs.google.com/forms/d/18XB760X2BtRs0zMy7HAqhI-GFGgHTB7La8Wa1azNiVs/edit?usp=sharing';
+
+    return (
+        <a className="feedback" href={url} target="_blank">
+            {locales[store.preferredLanguage].feedback}
+        </a>
+    );
+};
+
 const Menu = () => {
     const [collapsed, setCollapsed] = useState(true);
     const onMenuClick = () => {
@@ -145,16 +156,17 @@ export const Calendar = observer(() => {
             <Menu/>
             <div className="calendar">
                 <h1 className="gradient">{pageTitle} {year}</h1>
-                <div className="year-links">
-                    <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
-                    <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
-                </div>
                 <div className="months">
                     {months.map(month => (
                         <Month key={month} month={month} year={year}/>
                     ))}
                 </div>
+                <div className="year-links">
+                    <Link to={`/${year - 1}`}>&lt; {year - 1}</Link>
+                    <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
+                </div>
             </div>
+            <Feedback/>
         </div>
     );
 });
