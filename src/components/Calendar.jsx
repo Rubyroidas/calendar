@@ -51,7 +51,7 @@ export const Calendar = observer(() => {
                     <Link to={`/${year + 1}`}>{year + 1} &gt;</Link>
                 </div>
             </div>
-            {/*<Feedback/>*/}
+            <Feedback/>
         </div>
     );
 });

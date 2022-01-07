@@ -4,7 +4,7 @@ import React from 'react';
 
 export const Feedback = () => {
     const store = useStore();
-    const url = 'https://docs.google.com/forms/d/18XB760X2BtRs0zMy7HAqhI-GFGgHTB7La8Wa1azNiVs/edit?usp=sharing';
+    const url = 'https://docs.google.com/forms/d/e/1FAIpQLSc-vqiDyojLT_nWx1zLOBIr4lhsfBlZsH3FtG9ZRd9B9ffnyg/viewform';
 
     return (
         <a className="feedback" href={url} target="_blank">
