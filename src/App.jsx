@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {Calendar} from './Calendar';
+import {Calendar} from './components/Calendar';
 
 import './App.scss';
 
