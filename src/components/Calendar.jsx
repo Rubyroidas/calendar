@@ -14,6 +14,8 @@ import {Menu} from './Menu';
 import {Month} from './Month';
 import {Feedback} from './Feedback';
 
+import './Calendar.scss';
+
 dayjs.extend(isoWeek);
 
 export const Calendar = observer(() => {

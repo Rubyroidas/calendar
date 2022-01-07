@@ -1,0 +1,22 @@
+.theme-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > .theme-item {
+    display: inline-block;
+    margin: 0 0.5rem;
+    background-color: var(--bg);
+    width: 12vmin;
+    height: 12vmin;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    border: solid 1px white;
+    border-radius: 50%;
+
+    &.current {
+      opacity: 1;
+    }
+  }
+}

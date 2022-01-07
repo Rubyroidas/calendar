@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import {useStore} from '../store';
 import * as locales from '../locales';
 
+import './ThemeSelector.scss';
+
 export const ThemeSelector = observer(() => {
     const store = useStore();
 

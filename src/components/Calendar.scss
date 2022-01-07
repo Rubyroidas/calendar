@@ -1,0 +1,25 @@
+.calendar {
+  padding: 4vmin;
+
+  .year-links {
+    margin: 1vmin 0;
+
+    & > a {
+      color: var(--link-color);
+      text-decoration: none;
+      display: inline-block;
+      padding: 2vmin;
+      margin: 0 1vmin;
+      font-size: 2rem;
+      //font-weight: bold;
+      border: solid 1px var(--link-color);
+      border-radius: 1rem;
+    }
+  }
+
+  .months {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4vmin 6vmin;
+  }
+}

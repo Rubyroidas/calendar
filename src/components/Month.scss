@@ -1,0 +1,35 @@
+.month {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .description {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .name {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-content: center;
+    grid-gap: 0.5vmin;
+    align-self: stretch;
+
+    .day {
+      font-weight: bold;
+      font-size: 1rem;
+
+      &.holiday {
+        color: var(--grad-2);
+      }
+    }
+  }
+}

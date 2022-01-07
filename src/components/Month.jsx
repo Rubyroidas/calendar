@@ -6,6 +6,8 @@ import dayjs from 'dayjs';
 import {useStore} from '../store';
 import * as locales from '../locales';
 
+import './Month.scss';
+
 export const Month = observer(({month, year}) => {
     const store = useStore();
     const firstMonday = dayjs(`${year}-${month.toString().padStart(2, '0')}-10`).startOf('isoWeek').date() % 7;
