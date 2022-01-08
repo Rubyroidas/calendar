@@ -20,6 +20,6 @@
   .months {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 4vmin 6vmin;
+    grid-gap: 0 2vmin;
   }
 }

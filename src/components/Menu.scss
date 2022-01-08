@@ -16,7 +16,7 @@ menu {
     pointer-events: auto;
 
     rect {
-      fill: #fff;
+      fill: var(--menu-icon-color);
       transform: translate(0, 0) rotate(0);
       transition: transform 0.2s linear, opacity 0.2s linear;
       pointer-events: none;
@@ -34,7 +34,7 @@ menu {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s linear;
-    background: rgb(86, 86, 86, 0.77) none;
+    background: var(--menu-bg-color) none;
     backdrop-filter: blur(10px);
     padding: 1rem;
     border-radius: 1rem;

@@ -23,9 +23,11 @@ export const Month = observer(({month, year}) => {
             days.push(date);
         }
     }
+    const now = new Date();
+    const currentMonth = now.getFullYear() === year && now.getMonth() + 1 === month;
 
     return (
-        <div className="month">
+        <div className={classNames('month', {current: currentMonth})}>
             <div className="description">{locales[store.preferredLanguage].monthDescriptions[month - 1]}</div>
             <div className="name gradient">{monthName}</div>
             <div className="days">
@@ -37,7 +39,10 @@ export const Month = observer(({month, year}) => {
                 ))}
                 {days.map(date => (
                     <div key={date.getDate()}
-                         className={classNames('day', {holiday: dayjs(`${year}-${month.toString().padStart(2, '0')}-${date.getDate()}`).isoWeekday() >= 6})}
+                         className={classNames('day', {
+                             current: currentMonth && now.getDate() === date.getDate(),
+                             holiday: dayjs(`${year}-${month.toString().padStart(2, '0')}-${date.getDate()}`).isoWeekday() >= 6
+                         })}
                     >{date.getDate()}</div>
                 ))}
             </div>

@@ -1,0 +1,43 @@
+:root {
+  --grad-1: #ce9009;
+  --grad-2: #c40c56;
+  --bg: #000;
+  --text-color: #fff;
+  --link-color: #888;
+  --highlight-background-color: rgba(255, 255, 255, 0.2);
+  --menu-icon-color: #fff;
+  --menu-bg-color: rgb(86, 86, 86, 0.77);
+}
+
+.theme-default {
+  --grad-1: #ce9009;
+  --grad-2: #c40c56;
+  --bg: #000;
+  --text-color: #fff;
+  --link-color: #888;
+  --highlight-background-color: rgba(255, 255, 255, 0.2);
+  --menu-icon-color-color: #fff;
+  --menu-bg-color: rgb(86, 86, 86, 0.77);
+}
+
+.theme-purple {
+  --grad-1: #ff67d9;
+  --grad-2: #1bbecd;
+  --bg: #350054;
+  --text-color: #d7d7d7;
+  --link-color: #e13131;
+  --highlight-background-color: rgb(255, 157, 249, 0.15);
+  --menu-icon-color: #fff;
+  --menu-bg-color: rgb(86, 86, 86, 0.77);
+}
+
+.theme-green {
+  --grad-1: #43cff7;
+  --grad-2: #0649ab;
+  --bg: #b5ff99;
+  --text-color: #3c3c3c;
+  --link-color: #813027;
+  --highlight-background-color: rgba(0, 0, 0, 0.14);
+  --menu-icon-color: #1d3a25;
+  --menu-bg-color: rgb(193, 193, 193, 0.77);
+}

@@ -1,10 +1,4 @@
-:root {
-  --grad-1: #ce9009;
-  --grad-2: #c40c56;
-  --bg: #000;
-  --text-color: #fff;
-  --link-color: #888;
-}
+@import 'components/Themes';
 
 body, html {
   padding: 0;
@@ -44,27 +38,4 @@ h1 {
   display: inline-block;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.theme-default {
-  --grad-1: #ce9009;
-  --grad-2: #c40c56;
-  --bg: #000;
-  --text-color: #fff;
-  --link-color: #888;}
-
-.theme-purple {
-  --grad-1: #ff67d9;
-  --grad-2: #1bbecd;
-  --bg: #350054;
-  --text-color: #d7d7d7;
-  --link-color: #e13131;
-}
-
-.theme-green {
-  --grad-1: #43cff7;
-  --grad-2: #0649ab;
-  --bg: #b5ff99;
-  --text-color: #3c3c3c;
-  --link-color: #813027;
 }
