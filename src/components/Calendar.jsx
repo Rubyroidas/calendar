@@ -39,7 +39,7 @@ export const Calendar = observer(() => {
     }, [store.theme]);
 
     return (
-        <div>
+        <div className="app">
             <Menu/>
             <div className="calendar">
                 <h1 className="gradient">{pageTitle} {year}</h1>
