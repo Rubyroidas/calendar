@@ -13,13 +13,16 @@ export const LanguageSelector = observer(() => {
     return (
         <div className="language-select">
             {locales[store.preferredLanguage].language}:
-            {store.availableLanguages.map(lang => (
-                <div
-                    key={lang}
-                    className={classNames('flag', lang, {current: lang === store.preferredLanguage})}
-                    onClick={() => store.setPreferredLanguage(lang)}
-                />
-            ))}
+            <div className="list">
+                {store.availableLanguages.map(lang => (
+                    <div
+                        key={lang}
+                        className={classNames('flag', {current: lang === store.preferredLanguage})}
+                        style={{backgroundImage: `url(/img/flag-${lang}.png)`}}
+                        onClick={() => store.setPreferredLanguage(lang)}
+                    />
+                ))}
+            </div>
         </div>
     );
 });

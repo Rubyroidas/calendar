@@ -2,12 +2,6 @@ import React, {useEffect} from 'react';
 import {observer} from 'mobx-react';
 import {Link, useParams} from 'react-router-dom';
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/en';
-import 'dayjs/locale/ru';
-import 'dayjs/locale/uk';
-import isoWeek from 'dayjs/plugin/isoWeek';
-
 import * as locales from '../locales';
 import {useStore} from '../store';
 import {Menu} from './Menu';
@@ -15,8 +9,6 @@ import {Month} from './Month';
 import {Feedback} from './Feedback';
 
 import './Calendar.scss';
-
-dayjs.extend(isoWeek);
 
 export const Calendar = observer(() => {
     const store = useStore();

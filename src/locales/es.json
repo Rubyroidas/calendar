@@ -1,0 +1,30 @@
+{
+  "flag": "\uD83C\uDDEA\uD83C\uDDF8",
+  "theme": "tema",
+  "language": "idioma",
+  "feedback": "reacción",
+  "pageTitle": "Maldito calendario",
+  "monthDescriptions": [
+    "maldito año nuevo",
+    "Maldita congelación",
+    "Maldita suciedad",
+    "malditos bromistas",
+    "Maldito día del trabajo",
+    "Estudiantes de mierda",
+    "Jodidamente caliente",
+    "Jodidas vacaciones",
+    "Maldito 3 de septiembre",
+    "jodidamente lloviendo",
+    "Malditos descuentos",
+    "malditos regalos"
+  ],
+  "weekDays": [
+    "Lu",
+    "Ma",
+    "Mi",
+    "Ju",
+    "Vi",
+    "Sa",
+    "Do"
+  ]
+}

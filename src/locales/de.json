@@ -1,0 +1,30 @@
+{
+  "flag": "\uD83C\uDDE9\uD83C\uDDEA",
+  "theme": "thema",
+  "language": "sprache",
+  "feedback": "rückmeldung",
+  "pageTitle": "Verdammter Kalender",
+  "monthDescriptions": [
+    "Verdammtes neues Jahr",
+    "Verdammt eiskalt",
+    "Verdammter Dreck",
+    "Verdammte Joker",
+    "Verdammter Arbeitstag",
+    "Verdammte Studenten",
+    "Verdammt heiß",
+    "Verdammter Urlaub",
+    "Verdammt am 3. September",
+    "Verdammt regnen",
+    "Verdammte Rabatte",
+    "Verdammte Geschenke"
+  ],
+  "weekDays": [
+    "Mo",
+    "Di",
+    "Mi",
+    "Do",
+    "Fr",
+    "Sa",
+    "So"
+  ]
+}

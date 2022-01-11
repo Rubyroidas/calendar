@@ -13,13 +13,15 @@ export const ThemeSelector = observer(() => {
     return (
         <div className="theme-select">
             {locales[store.preferredLanguage].theme}:
-            {store.availableThemes.map(theme => (
-                <div
-                    key={theme}
-                    className={classNames('theme-item', `theme-${theme || 'default'}`, {current: theme === store.theme})}
-                    onClick={() => store.setPreferredTheme(theme)}
-                />
-            ))}
+            <div className="list">
+                {store.availableThemes.map(theme => (
+                    <div
+                        key={theme}
+                        className={classNames('theme-item', `theme-${theme || 'default'}`, {current: theme === store.theme})}
+                        onClick={() => store.setPreferredTheme(theme)}
+                    />
+                ))}
+            </div>
         </div>
     );
 });
