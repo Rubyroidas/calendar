@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import dayjs from 'dayjs';
 
 import {useStore} from '../store';
-import * as locales from '../locales';
+import {locales} from '../locales';
 
 import './Month.scss';
 

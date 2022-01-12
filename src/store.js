@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeAutoObservable, runInAction} from 'mobx';
-import * as locales from './locales';
+import {locales, localeDayjsMap} from './locales';
 import dayjs from 'dayjs';
 
 export class Store {
@@ -33,7 +33,7 @@ export class Store {
         runInAction(() => {
             this.preferredLanguage = value;
             localStorage.setItem('preferredLanguage', value);
-            dayjs.locale(this.preferredLanguage);
+            dayjs.locale(localeDayjsMap[this.preferredLanguage] || this.preferredLanguage);
         });
     }
 

@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import classNames from 'classnames';
 
 import {useStore} from '../store';
-import * as locales from '../locales';
+import {locales} from '../locales';
 
 import './ThemeSelector.scss';
 

@@ -1,5 +1,5 @@
 import {useStore} from '../store';
-import * as locales from '../locales';
+import {locales} from '../locales';
 import React from 'react';
 
 import './Feedback.scss';

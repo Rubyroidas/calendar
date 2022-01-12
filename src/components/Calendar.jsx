@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {observer} from 'mobx-react';
 import {Link, useParams} from 'react-router-dom';
 
-import * as locales from '../locales';
+import {locales} from '../locales';
 import {useStore} from '../store';
 import {Menu} from './Menu';
 import {Month} from './Month';
